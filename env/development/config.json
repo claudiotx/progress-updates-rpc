@@ -1,0 +1,12 @@
+{
+	"mongodb":"mongodb://localhost/dev_database",
+	"s3":{
+		"Bucket":"mserver"
+	},
+	"rabbitmq":{	  
+	    "user": "admin",
+	    "pass": "password",
+	    "server": "localhost",
+	    "vhost": "/test-app"
+	}	
+}

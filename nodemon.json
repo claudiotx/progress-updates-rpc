@@ -1,0 +1,5 @@
+{
+	"verbose": true,
+	"watch": ["web_app","lib", "web_app/routes", "long_process_app"],
+	"ignore":["node_modules","web_app/www/public", "web_app/www/app", "web_app/www/sass", "web_app/views", "web_app/public"]
+}

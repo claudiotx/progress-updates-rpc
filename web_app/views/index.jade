@@ -1,0 +1,18 @@
+extends layout
+block content
+	h1= title
+	form(action="/", method="post")
+		p
+			| Command:
+			input(name="command", value="command")
+		p			
+			input(type="submit", method="POST")
+
+	h2 Progress of Jobs Queue
+	- each key in Object.keys(progressList)
+		- status = progressList[key]
+		p
+			= status.id
+			| :
+			= status.percent
+			|% complete
