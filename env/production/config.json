@@ -1,5 +1,5 @@
-{	
-	"mongodb":"mongodb://localhost/dev_database",
+{
+	"mongodb":"mongodb://admin:password@ds133338.mlab.com:33338/test-lab",
 	"s3":{
 		"Bucket":"mserver"
 	},

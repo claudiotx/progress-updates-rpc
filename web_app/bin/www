@@ -15,8 +15,7 @@ const server = http.createServer(app);
 
 // connect and wait for messages
 // -----------------------------
-connection(function(){
-  console.log("Web App Connected and Listening..");  
+connection(function(){  
   console.log("Express Web Server started...");  
   // Node Server
   server.listen(port);

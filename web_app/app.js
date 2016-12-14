@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 const jobStatus = require('./lib/jobStatus');
 var index = require('./routes/index');
+const raygun = require('raygun');
+const epa = require('epa').getEnvironment();
 
 // Express View Engine Setup
 // -----------------------------
@@ -40,6 +42,7 @@ app.use(session({
 //   next(); //continue
 // });
 
+
 // Middleware - Parsers
 // -----------------------------
 // uncomment after placing your favicon in /public
@@ -50,6 +53,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
+
+// Middleware - Raygun Error Reporter (Automatic)
+// -----------------------------
+const raygunKey = epa.get('raygun'); 
+const raygunClient = new raygun.Client().init({ 
+  apiKey: raygunKey.key
+});
+app.use(raygunClient.expressHandler);
+process.on('uncaughtException',(err)=>{
+  raygunClient.send(err);
+  console.log(err.stack);
+  process.exit(-1);
+});
 
 // Middleware - 404 Handler
 // -----------------------------
